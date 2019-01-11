@@ -7,6 +7,8 @@
 //
 
 #import "ViewController.h"
+#import "OpenMemberVC.h"
+#import "UIView+NTES.h"
 
 @interface ViewController ()
 
@@ -16,7 +18,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    UIButton *button=[[UIButton alloc]init];
+    [button setTitle:@"开通会员" forState:UIControlStateNormal];
+    button.backgroundColor=[UIColor redColor];
+    button.frame=CGRectMake(0, 200, 100, 50);
+    [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:button];
+    [button setCenterX:CGRectGetWidth(self.view.frame)/2];
+}
+
+-(void)buttonClick:(UIButton *)button{
+    OpenMemberVC *openMemberVC=[[OpenMemberVC alloc]init];
+    [self.navigationController pushViewController:openMemberVC animated:YES];
 }
 
 
